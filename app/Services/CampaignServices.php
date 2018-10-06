@@ -26,9 +26,9 @@ class CampaignService
         return $campaign;
     }
 
-    public function update(Campaign $arg_campaign, array $attributes)
+    public function update(Campaign $argCampaign, array $attributes)
     {
-        $campaign = clone $arg_campaign;
+        $campaign = clone $argCampaign;
         $campaign->fill($attributes);
         $campaign->save();
 

@@ -26,9 +26,9 @@ class ShopService
         return $shop;
     }
 
-    public function update(Shop $arg_shop, array $attributes)
+    public function update(Shop $argShop, array $attributes)
     {
-        $shop = clone $arg_shop;
+        $shop = clone $argShop;
         $shop->fill($attributes);
         $shop->save();
 
@@ -40,5 +40,3 @@ class ShopService
         $shop->delete();
     }
 }
-
-?>
