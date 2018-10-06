@@ -26,8 +26,9 @@ class InvoiceService
         return $invoice;
     }
 
-    public function update(Invoice $invoice, array $attributes)
+    public function update(Invoice $argInvoice, array $attributes)
     {
+        $invoice = clone $argInvoice;
         $invoice->fill($attributes);
         $invoice->save();
 

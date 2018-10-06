@@ -26,8 +26,9 @@ class ShopService
         return $shop;
     }
 
-    public function update(Shop $shop, array $attributes)
+    public function update(Shop $arg_shop, array $attributes)
     {
+        $shop = clone $arg_shop;
         $shop->fill($attributes);
         $shop->save();
 
