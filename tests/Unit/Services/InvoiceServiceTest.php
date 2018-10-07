@@ -4,7 +4,6 @@ namespace Tests\Unit\Services;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use App\Eloquents\User;
 use App\Eloquents\Shop;
 use App\Eloquents\Invoice;
 use App\Services\InvoiceService;
