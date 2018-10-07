@@ -1,6 +1,7 @@
 <?php
 
 use Faker\Generator as Faker;
+use Carbon\Carbon;
 
 use App\Eloquents\User;
 use App\Eloquents\Campaign;
@@ -38,6 +39,9 @@ $factory->define(Shop::class, function (Faker $faker) {
 });
 
 $factory->define(Campaign::class, function (Faker $faker) {
+    $beginAt = Carbon::today();
+    $endAt = Carbon::tomorrow();
+
     return [
         'shop_id' => function () {
             return factory(Shop::class)->create()->id;
@@ -45,8 +49,8 @@ $factory->define(Campaign::class, function (Faker $faker) {
         'name' => $faker->name,
         'budget' => $faker->numberBetween(1000, 50000),
         'media' => $faker->numberBetween(1, 4),
-        'begin_at' => $faker->numberBetween(1000, 50000),
-        'end_at' => $faker->dateTime(),
+        'begin_at' => $beginAt,
+        'end_at' => $endAt,
         'description' => $faker->realText(),
         'approval_status' => $faker->numberBetween(1, 3),
         'comment' => $faker->realText(),
@@ -54,13 +58,16 @@ $factory->define(Campaign::class, function (Faker $faker) {
 });
 
 $factory->define(Invoice::class, function (Faker $faker) {
+    $beginAt = Carbon::today();
+    $endAt = Carbon::tomorrow();
+
     return [
         'shop_id' => function () {
             return factory(Shop::class)->create()->id;
         },
         'billing_amount' => $faker->numberBetween(1000, 50000),
-        'begin_at' => $faker->dateTime(),
-        'end_at' => $faker->dateTime(),
+        'begin_at' => $beginAt,
+        'end_at' => $endAt,
         'description' => $faker->realText(),
     ];
 });
