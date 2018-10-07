@@ -92,7 +92,6 @@ class CampaignTest extends TestCase
          $endAt = Carbon::today();
          $shop = factory(Shop::class)->create();
          $attributes = [
-             'id' => $campaign->id,
              'shop_id' => $shop->id,
              'name' => 'testUpdateName',
              'budget' => '6789',
@@ -108,8 +107,8 @@ class CampaignTest extends TestCase
          $result = $service->update($campaign, $attributes);
 
          $this->assertEquals($shop->id, $result->shop_id);
+         $this->assertEquals($campaign->id, $result->id);
          $this->assertDatabaseHas('campaigns', [
-           'id' => $campaign->id,
            'shop_id' => $shop->id,
            'name' => 'testUpdateName',
            'budget' => '6789',
