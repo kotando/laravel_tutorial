@@ -30,6 +30,7 @@ $factory->define(User::class, function (Faker $faker) {
 
 $factory->define(Shop::class, function (Faker $faker) {
     return [
+        'name' => $faker->company,
         'user_id' => function () {
             return factory(User::class)->create()->id;
         },
