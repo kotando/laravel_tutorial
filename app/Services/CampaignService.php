@@ -14,7 +14,7 @@ class CampaignService
 
     public function findOrFail(int $campaignId)
     {
-        return Canpaign::findOrFail($campaignId);
+        return Campaign::findOrFail($campaignId);
     }
 
     public function create(array $attributes)

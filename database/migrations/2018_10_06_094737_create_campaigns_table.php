@@ -15,9 +15,9 @@ class CreateCampaignsTable extends Migration
     {
         Schema::create('campaigns', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('shop_id');
+            $table->unsignedInteger('shop_id');
             $table->string('name');
-            $table->integer('budget');
+            $table->unsignedInteger('budget');
             $table->unsignedInteger('media');
             $table->datetime('begin_at');
             $table->datetime('end_at');
