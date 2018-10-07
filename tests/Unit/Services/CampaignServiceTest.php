@@ -7,9 +7,9 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Eloquents\Shop;
 use App\Eloquents\Campaign;
 use App\Services\CampaignService;
-
+use Carbon\Carbon;
 /**
- * @coversDefaultClass \App\Services\ShopService
+ * @coversDefaultClass \App\Services\CmapaignService
  */
 class CampaignTest extends TestCase
 {
@@ -50,16 +50,18 @@ class CampaignTest extends TestCase
      {
          $shop = factory(Shop::class)->create();
          $campaign = factory(Campaign::class)->create();
+         $begin_at = Carbon::today();
+         $end_at = Carbon::tomorrow();
          $attributes = [
              'shop_id' => $shop->id,
-             'name' => $campaign->name,
-             'budget' => $campaign->budget,
-             'media' => $campaign->media,
-             'begin_at' => $campaign->begin_at,
-             'end_at' => $campaign->end_at,
-             'description' => $campaign->description,
-             'approval_status' => $campaign->approval_status,
-             'comment' => $campaign->comment,
+             'name' => 'testName',
+             'budget' => '12345',
+             'media' => '1',
+             'begin_at' =>  $begin_at,
+             'end_at' => $end_at,
+             'description' => 'testDescription',
+             'approval_status' => '1',
+             'comment' => 'testComment',
          ];
 
          $service = new CampaignService();
@@ -67,15 +69,15 @@ class CampaignTest extends TestCase
 
          $this->assertEquals($shop->id, $result->shop_id);
          $this->assertDatabaseHas('campaigns', [
-             'shop_id'     => $shop->id,
-             'name' => $campaign->name,
-             'budget' => $campaign->budget,
-             'media' => $campaign->media,
-             'begin_at' => $campaign->begin_at,
-             'end_at' => $campaign->end_at,
-             'description' => $campaign->description,
-             'approval_status' => $campaign->approval_status,
-             'comment' => $campaign->comment,
+             'shop_id' => $shop->id,
+             'name' => 'testName',
+             'budget' => '12345',
+             'media' => '1',
+             'begin_at' =>  $begin_at,
+             'end_at' => $end_at,
+             'description' => 'testDescription',
+             'approval_status' => '1',
+             'comment' => 'testComment',
          ]);
      }
 
@@ -86,10 +88,20 @@ class CampaignTest extends TestCase
      public function testUpdate()
      {
          $campaign = factory(Campaign::class)->create();
-
+         $begin_at = Carbon::yesterday();
+         $end_at = Carbon::today();
          $shop = factory(Shop::class)->create();
          $attributes = [
-             'shop_id' => $shop->id
+             'id' => $campaign->id,
+             'shop_id' => $shop->id,
+             'name' => 'testUpdateName',
+             'budget' => '6789',
+             'media' => '3',
+             'begin_at' =>  $begin_at,
+             'end_at' => $end_at,
+             'description' => 'testUpdateDescription',
+             'approval_status' => '3',
+             'comment' => 'testUpdateComment',
          ];
 
          $service = new CampaignService();
@@ -97,8 +109,16 @@ class CampaignTest extends TestCase
 
          $this->assertEquals($shop->id, $result->shop_id);
          $this->assertDatabaseHas('campaigns', [
-             'id'      => $campaign->id,
-             'shop_id' => $shop->id,
+           'id' => $campaign->id,
+           'shop_id' => $shop->id,
+           'name' => 'testUpdateName',
+           'budget' => '6789',
+           'media' => '3',
+           'begin_at' =>  $begin_at,
+           'end_at' => $end_at,
+           'description' => 'testUpdateDescription',
+           'approval_status' => '3',
+           'comment' => 'testUpdateComment',
          ]);
      }
 
