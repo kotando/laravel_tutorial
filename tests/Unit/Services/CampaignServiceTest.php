@@ -50,15 +50,15 @@ class CampaignTest extends TestCase
      {
          $shop = factory(Shop::class)->create();
          $campaign = factory(Campaign::class)->create();
-         $begin_at = Carbon::today();
-         $end_at = Carbon::tomorrow();
+         $beginAt = Carbon::today();
+         $endAt = Carbon::tomorrow();
          $attributes = [
              'shop_id' => $shop->id,
              'name' => 'testName',
              'budget' => '12345',
              'media' => '1',
-             'begin_at' =>  $begin_at,
-             'end_at' => $end_at,
+             'begin_at' =>  $beginAt,
+             'end_at' => $endAt,
              'description' => 'testDescription',
              'approval_status' => '1',
              'comment' => 'testComment',
@@ -73,8 +73,8 @@ class CampaignTest extends TestCase
              'name' => 'testName',
              'budget' => '12345',
              'media' => '1',
-             'begin_at' =>  $begin_at,
-             'end_at' => $end_at,
+             'begin_at' =>  $beginAt,
+             'end_at' => $endAt,
              'description' => 'testDescription',
              'approval_status' => '1',
              'comment' => 'testComment',
@@ -88,8 +88,8 @@ class CampaignTest extends TestCase
      public function testUpdate()
      {
          $campaign = factory(Campaign::class)->create();
-         $begin_at = Carbon::yesterday();
-         $end_at = Carbon::today();
+         $beginAt = Carbon::yesterday();
+         $endAt = Carbon::today();
          $shop = factory(Shop::class)->create();
          $attributes = [
              'id' => $campaign->id,
@@ -97,8 +97,8 @@ class CampaignTest extends TestCase
              'name' => 'testUpdateName',
              'budget' => '6789',
              'media' => '3',
-             'begin_at' =>  $begin_at,
-             'end_at' => $end_at,
+             'begin_at' =>  $beginAt,
+             'end_at' => $endAt,
              'description' => 'testUpdateDescription',
              'approval_status' => '3',
              'comment' => 'testUpdateComment',
@@ -114,8 +114,8 @@ class CampaignTest extends TestCase
            'name' => 'testUpdateName',
            'budget' => '6789',
            'media' => '3',
-           'begin_at' =>  $begin_at,
-           'end_at' => $end_at,
+           'begin_at' =>  $beginAt,
+           'end_at' => $endAt,
            'description' => 'testUpdateDescription',
            'approval_status' => '3',
            'comment' => 'testUpdateComment',
