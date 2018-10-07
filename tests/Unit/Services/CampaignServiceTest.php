@@ -9,7 +9,7 @@ use App\Eloquents\Campaign;
 use App\Services\CampaignService;
 use Carbon\Carbon;
 /**
- * @coversDefaultClass \App\Services\CmapaignService
+ * @coversDefaultClass \App\Services\CampaignService
  */
 class CampaignTest extends TestCase
 {
