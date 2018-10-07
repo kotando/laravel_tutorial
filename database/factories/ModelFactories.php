@@ -2,6 +2,7 @@
 
 use Faker\Generator as Faker;
 
+use App\Eloquents\User;
 use App\Eloquents\Campaign;
 use App\Eloquents\Invoice;
 use App\Eloquents\Shop;
@@ -17,7 +18,7 @@ use App\Eloquents\Shop;
 |
 */
 
-$factory->define(App\Eloquents\User::class, function (Faker $faker) {
+$factory->define(User::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
@@ -27,18 +28,18 @@ $factory->define(App\Eloquents\User::class, function (Faker $faker) {
     ];
 });
 
-$factory->define(App\Eloquents\Shop::class, function (Faker $faker) {
+$factory->define(Shop::class, function (Faker $faker) {
     return [
         'user_id' => function () {
-            return factory(App\Eloquents\User::class)->create()->id;
+            return factory(User::class)->create()->id;
         },
     ];
 });
 
-$factory->define(App\Eloquents\Campaign::class, fuction (Faker $faker) {
+$factory->define(Campaign::class, function (Faker $faker) {
     return [
         'shop_id' => function () {
-            return factory(App\Eloquents\Shop::class)->create()->id;
+            return factory(Shop::class)->create()->id;
         },
         'name' => $faker->name,
         'budget' => $faker->numberBetween(1000, 50000),
@@ -51,10 +52,10 @@ $factory->define(App\Eloquents\Campaign::class, fuction (Faker $faker) {
     ];
 });
 
-$factory->define(App\Eloquents\Invoice::class, function (Faker $faker) {
+$factory->define(Invoice::class, function (Faker $faker) {
     return [
         'shop_id' => function () {
-            return factory(App\Eloquents\Shop::class)->create()->id;
+            return factory(Shop::class)->create()->id;
         },
         'billing_amount' => $faker->numberBetween(1000, 50000),
         'begin_at' => $faker->dateTime(),
