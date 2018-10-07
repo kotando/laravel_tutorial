@@ -17,9 +17,11 @@ class CreateInvoicesTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('shop_id');
             $table->unsignedInteger('billing_amount');
+            $table->string('name');
             $table->datetime('begin_at');
             $table->datetime('end_at');
             $table->string('description');
+            $table->unsignedInteger('check_status');
             $table->timestamps();
         });
     }
