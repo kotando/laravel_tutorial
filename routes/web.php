@@ -14,3 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/shop', 'ShopController@index');
+Route::get('/shop/create', 'ShopController@create');
+Route::post('/shop', 'ShopController@store');
+Route::get('/shop/{shopId}/edit', 'ShopController@edit');
+Route::post('/shop/{shopId}', 'ShopController@update');
+Route::post('/shop', 'ShopController@destroy');
