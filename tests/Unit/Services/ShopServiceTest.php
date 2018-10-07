@@ -38,6 +38,7 @@ class ShopTest extends TestCase
          $service = new ShopService();
          $result = $service->findOrFail($shop->id);
 
+         $this->assertEquals($shop->id, $result->id);
          $this->assertEquals($shop->user_id, $result->user_id);
      }
 
