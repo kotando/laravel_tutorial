@@ -65,9 +65,11 @@ $factory->define(Invoice::class, function (Faker $faker) {
         'shop_id' => function () {
             return factory(Shop::class)->create()->id;
         },
+        'name' => $faker->company,
         'billing_amount' => $faker->numberBetween(1000, 50000),
         'begin_at' => $beginAt,
         'end_at' => $endAt,
         'description' => $faker->realText(),
+        'check_status' => $faker->numberBetween(1, 3),
     ];
 });
