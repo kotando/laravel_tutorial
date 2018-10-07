@@ -57,10 +57,12 @@ class InvoiceTest extends TestCase
 
          $attributes = [
              'shop_id' => $shop->id,
+             'name' => 'Hoge',
              'billing_amount' => 30000,
              'begin_at' => $beginAt,
              'end_at' => $endAt,
              'description' => 'I am Nonaka',
+             'check_status' => 1,
          ];
 
          $service = new InvoiceService();
@@ -69,10 +71,12 @@ class InvoiceTest extends TestCase
          $this->assertEquals($shop->id, $result->shop_id);
          $this->assertDatabaseHas('invoices', [
              'shop_id'     => $shop->id,
+             'name' => $attributes['name'],
              'billing_amount' => $attributes['billing_amount'],
              'begin_at' => $attributes['begin_at'],
              'end_at' => $attributes['end_at'],
              'description' => $attributes['description'],
+             'check_status' => $attributes['check_status']
          ]);
      }
 
@@ -91,10 +95,12 @@ class InvoiceTest extends TestCase
 
          $attributes = [
              'shop_id' => $shop->id,
+             'name' => 'Hoge',
              'billing_amount' => 30000,
              'begin_at' => $beginAt,
              'end_at' => $endAt,
              'description' => 'I am Nonaka',
+             'check_status' => 1,
          ];
 
          $service = new InvoiceService();
@@ -103,10 +109,12 @@ class InvoiceTest extends TestCase
          $this->assertEquals($shop->id, $result->shop_id);
          $this->assertDatabaseHas('invoices', [
              'shop_id'     => $shop->id,
+             'name' => $attributes['name'],
              'billing_amount' => $attributes['billing_amount'],
              'begin_at' => $attributes['begin_at'],
              'end_at' => $attributes['end_at'],
              'description' => $attributes['description'],
+             'check_status' => $attributes['check_status']
          ]);
      }
 
